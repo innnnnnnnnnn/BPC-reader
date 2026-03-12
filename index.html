@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0d1117">
+  <title>BPC Reader — Bypass Paywalls Mobile</title>
+  <meta name="description" content="內建 Bypass Paywalls Clean 的手機閱讀器，支援 460+ 付費牆網站">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Design Tokens ────────────────────────────────────────────── */
+    :root {
+      --bg:           #0d1117;
+      --bg2:          #161b22;
+      --surface:      rgba(22,27,34,0.92);
+      --surface-blur: rgba(22,27,34,0.7);
+      --glass:        rgba(255,255,255,0.05);
+      --glass-hover:  rgba(255,255,255,0.09);
+      --border:       rgba(48,54,61,0.9);
+      --border-focus: rgba(88,166,255,0.5);
+      --accent:       #58a6ff;
+      --accent2:      #bc8cff;
+      --green:        #3fb950;
+      --red:          #f85149;
+      --amber:        #e3b341;
+      --text:         #c9d1d9;
+      --text-dim:     #6e7681;
+      --text-bright:  #f0f6fc;
+      --gradient:     linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+      --bar-h:        56px;
+      --bottom-h:     64px;
+      --radius:       14px;
+    }
+
+    /* ── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
+    html, body {
+      height: 100%; overflow: hidden;
+      font-family: 'Outfit', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    /* ── Layout ───────────────────────────────────────────────────── */
+    #app {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ── Top Bar ──────────────────────────────────────────────────── */
+    #topbar {
+      height: var(--bar-h);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 12px;
+      background: var(--surface);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      z-index: 200;
+      flex-shrink: 0;
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    /* Logo icon */
+    .logo {
+      width: 34px; height: 34px;
+      background: var(--gradient);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(88,166,255,0.35);
+    }
+
+    /* URL Bar */
+    #url-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 0 10px 0 12px;
+      height: 40px;
+      transition: border-color .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    #url-wrap:focus-within {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+    }
+
+    #bpc-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-right: 7px;
+      box-shadow: 0 0 6px rgba(63,185,80,0.6);
+      transition: background .3s, box-shadow .3s;
+    }
+    #bpc-dot.off { background: var(--text-dim); box-shadow: none; }
+
+    #url-input {
+      flex: 1;
+      background: transparent;
+      border: none; outline: none;
+      color: var(--text-bright);
+      font-family: inherit;
+      font-size: 14px;
+      caret-color: var(--accent);
+      width: 100%;
+      min-width: 0;
+    }
+    #url-input::placeholder { color: var(--text-dim); }
+
+    #go-btn {
+      background: transparent; border: none;
+      color: var(--accent); font-size: 20px;
+      cursor: pointer; padding: 0 2px;
+      opacity: .7; transition: opacity .2s;
+    }
+    #go-btn:active { opacity: 1; transform: scale(1.1); }
+
+    /* Icon Buttons */
+    .icon-btn {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: background .2s, transform .15s;
+    }
+    .icon-btn:active { transform: scale(.93); background: var(--glass-hover); }
+    .icon-btn.active { background: var(--gradient); border-color: transparent; color: white; }
+
+    /* ── Progress Bar ─────────────────────────────────────────────── */
+    #progress-bar {
+      height: 3px;
+      background: var(--gradient);
+      width: 0%;
+      transition: width .3s ease;
+      position: absolute;
+      bottom: 0; left: 0;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Content Area ─────────────────────────────────────────────── */
+    #content {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* hero */
+    #hero {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px 20px;
+      background: radial-gradient(ellipse at 50% -10%, rgba(88,166,255,.15) 0%, transparent 60%),
+                  var(--bg);
+      z-index: 1;
+      overflow-y: auto;
+    }
+    #hero.hidden { display: none; }
+
+    .hero-badge {
+      background: rgba(88,166,255,.12);
+      border: 1px solid rgba(88,166,255,.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: .5px;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero-sub {
+      color: var(--text-dim);
+      font-size: 14px;
+      text-align: center;
+      max-width: 300px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Quick access grid */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 28px;
+    }
+    .quick-btn {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background .2s, transform .15s, border-color .2s;
+    }
+    .quick-btn:active { transform: scale(.96); }
+    .quick-btn:hover { background: var(--glass-hover); border-color: rgba(88,166,255,.3); }
+    .quick-btn .qb-icon { font-size: 22px; }
+    .quick-btn .qb-name {
+      font-size: 11px; font-weight: 600;
+      color: var(--text-bright);
+      text-align: center;
+    }
+    .quick-btn .qb-badge {
+      font-size: 9px; color: var(--green);
+      font-weight: 600; text-transform: uppercase;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex; gap: 20px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      max-width: 360px; width: 100%;
+    }
+    .stat { text-align: center; flex: 1; }
+    .stat-num {
+      font-size: 1.4rem; font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+    /* iframe */
+    #browser-frame {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+      display: none;
+      background: white;
+    }
+
+    /* ── Bottom Nav ───────────────────────────────────────────────── */
+    #bottomnav {
+      height: var(--bottom-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: var(--surface);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-top: 1px solid var(--border);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      flex-shrink: 0;
+      z-index: 200;
+    }
+    .nav-btn {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 3px;
+      background: none; border: none;
+      color: var(--text-dim);
+      font-size: 9.5px; font-family: inherit;
+      cursor: pointer;
+      transition: color .2s;
+      padding: 0 10px;
+    }
+    .nav-btn .ni { font-size: 21px; }
+    .nav-btn.active { color: var(--accent); }
+    .nav-btn:active { transform: scale(.9); }
+
+    /* ── Toast ────────────────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: calc(var(--bottom-h) + 10px);
+      left: 50%; transform: translateX(-50%) translateY(10px);
+      background: var(--gradient);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .25s, transform .25s;
+      white-space: nowrap;
+      max-width: calc(100vw - 40px);
+      text-align: center;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Slide Panel ──────────────────────────────────────────────── */
+    .panel {
+      position: fixed; inset: 0; top: auto;
+      height: 82vh;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-top-left-radius: 22px;
+      border-top-right-radius: 22px;
+      z-index: 5000;
+      transform: translateY(100%);
+      transition: transform .32s cubic-bezier(.4,0,.2,1);
+      display: flex; flex-direction: column;
+    }
+    .panel.open { transform: translateY(0); }
+
+    .panel-handle {
+      width: 40px; height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      margin: 12px auto 0;
+      flex-shrink: 0;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .panel-header h3 { font-size: 16px; font-weight: 700; color: var(--text-bright); }
+    .panel-close {
+      width: 30px; height: 30px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px;
+    }
+
+    .panel-body {
+      flex: 1; overflow-y: auto;
+      padding: 16px;
+    }
+
+    /* Overlay backdrop */
+    #overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 4999;
+      display: none;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    #overlay.show { display: block; }
+
+    /* ── Card ─────────────────────────────────────────────────────── */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex; align-items: center;
+      gap: 12px;
+    }
+    .card-info { flex: 1; min-width: 0; }
+    .card-info h4 { font-size: 14px; color: var(--text-bright); font-weight: 600; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-info p  { font-size: 11.5px; color: var(--text-dim); }
+
+    /* Toggle switch */
+    .toggle {
+      width: 46px; height: 26px;
+      border-radius: 13px;
+      background: #30363d;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .25s;
+    }
+    .toggle.on { background: var(--green); }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      background: white;
+      border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: transform .25s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.3);
+    }
+    .toggle.on::after { transform: translateX(20px); }
+
+    /* History item */
+    .hist-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .hist-item:active { background: var(--glass-hover); }
+    .hist-icon { font-size: 18px; flex-shrink: 0; }
+    .hist-info { flex: 1; min-width: 0; }
+    .hist-url { font-size: 13px; color: var(--text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hist-time { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+    .hist-del { font-size: 16px; color: var(--text-dim); cursor: pointer; padding: 4px; }
+
+    /* Section heading */
+    .section-h {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px;
+      color: var(--text-dim);
+      margin: 18px 0 8px;
+    }
+
+    /* Settings entry */
+    .setting-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(48,54,61,.5);
+    }
+    .setting-label { font-size: 14px; color: var(--text); }
+    .setting-sub   { font-size: 11.5px; color: var(--text-dim); margin-top: 2px; }
+    select.setting-select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-bright);
+      padding: 5px 10px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+
+    /* Search result autocomplete */
+    #autocomplete {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      z-index: 1000;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    }
+    #autocomplete.show { display: block; }
+    .ac-item {
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-bright);
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    .ac-item:last-child { border-bottom: none; }
+    .ac-item:active { background: var(--glass); }
+    .ac-domain { color: var(--text-dim); font-size: 11.5px; margin-top: 2px; }
+
+    /* BPC status badge in extensions panel */
+    .bpc-badge {
+      background: var(--gradient);
+      color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* Animations */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading #go-btn { animation: spin .8s linear infinite; }
+
+    @keyframes glow-pulse {
+      0%,100% { box-shadow: 0 0 6px rgba(63,185,80,.5); }
+      50%      { box-shadow: 0 0 14px rgba(63,185,80,.9); }
+    }
+    #bpc-dot:not(.off) { animation: glow-pulse 2.5s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Top Bar ─────────────────────────────────────────── -->
+  <header id="topbar">
+    <div class="logo" title="BPC Reader">⚡</div>
+
+    <div id="url-wrap" role="search">
+      <div id="bpc-dot" title="BPC 繞過已啟用"></div>
+      <input
+        id="url-input"
+        type="url"
+        inputmode="url"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        placeholder="輸入網址或搜尋…"
+        aria-label="網址輸入">
+      <button id="go-btn" title="前往" aria-label="前往">⏎</button>
+      <div id="autocomplete" role="listbox"></div>
+      <div id="progress-bar"></div>
+    </div>
+
+    <button class="icon-btn" id="reader-toggle" title="閱讀模式" aria-label="閱讀模式">📖</button>
+    <button class="icon-btn" id="archive-btn" title="嘗試 Archive" aria-label="Archive 模式">🗄️</button>
+  </header>
+
+  <!-- ── Content ─────────────────────────────────────────── -->
+  <main id="content">
+    <div id="hero">
+      <div class="hero-badge">⚡ Bypass Paywalls Clean — 整合版</div>
+      <h1 class="hero-title">BPC Mobile<br>Reader</h1>
+      <p class="hero-sub">內建付費牆繞過，支援 460+ 個主流媒體網站</p>
+
+      <div class="quick-grid" id="quick-grid">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num" id="stat-sites">462</div>
+          <div class="stat-label">支援網站</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="stat-history">0</div>
+          <div class="stat-label">瀏覽記錄</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="stat-bypassed">0</div>
+          <div class="stat-label">本次繞過</div>
+        </div>
+      </div>
+    </div>
+
+    <iframe
+      id="browser-frame"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+      title="BPC 瀏覽器"></iframe>
+  </main>
+
+  <!-- ── Bottom Nav ──────────────────────────────────────── -->
+  <nav id="bottomnav" aria-label="導航">
+    <button class="nav-btn" id="btn-back" onclick="goBack()" aria-label="返回">
+      <span class="ni">←</span><span>返回</span>
+    </button>
+    <button class="nav-btn" id="btn-forward" onclick="goForward()" aria-label="前進">
+      <span class="ni">→</span><span>前進</span>
+    </button>
+    <button class="nav-btn" id="btn-reload" onclick="reload()" aria-label="重新整理">
+      <span class="ni">⟳</span><span>重新整理</span>
+    </button>
+    <button class="nav-btn" id="btn-ext" onclick="openPanel('ext')" aria-label="擴充">
+      <span class="ni">🧩</span><span>擴充</span>
+    </button>
+    <button class="nav-btn" id="btn-hist" onclick="openPanel('hist')" aria-label="歷史">
+      <span class="ni">🕐</span><span>歷史</span>
+    </button>
+    <button class="nav-btn" id="btn-settings" onclick="openPanel('settings')" aria-label="設定">
+      <span class="ni">⚙️</span><span>設定</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ── Toast ───────────────────────────────────────────── -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ── Overlay ─────────────────────────────────────────── -->
+<div id="overlay" onclick="closePanel()"></div>
+
+<!-- ── Extensions Panel ────────────────────────────────── -->
+<div class="panel" id="panel-ext">
+  <div class="panel-handle"></div>
+  <div class="panel-header">
+    <h3>🧩 擴充功能</h3>
+    <div class="panel-close" onclick="closePanel()" aria-label="關閉">✕</div>
+  </div>
+  <div class="panel-body" id="ext-body"></div>
+</div>
+
+<!-- ── History Panel ───────────────────────────────────── -->
+<div class="panel" id="panel-hist">
+  <div class="panel-handle"></div>
+  <div class="panel-header">
+    <h3>🕐 瀏覽歷史</h3>
+    <div class="panel-close" onclick="closePanel()" aria-label="關閉">✕</div>
+  </div>
+  <div class="panel-body" id="hist-body"></div>
+</div>
+
+<!-- ── Settings Panel ──────────────────────────────────── -->
+<div class="panel" id="panel-settings">
+  <div class="panel-handle"></div>
+  <div class="panel-header">
+    <h3>⚙️ 設定</h3>
+    <div class="panel-close" onclick="closePanel()" aria-label="關閉">✕</div>
+  </div>
+  <div class="panel-body" id="settings-body"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   BPC Mobile Reader — Main Script
+   ═══════════════════════════════════════════════════════════════ */
+'use strict';
+
+// ── State ──────────────────────────────────────────────────────
+const state = {
+  bpcEnabled:   true,
+  readerMode:   false,
+  uaOverride:   'auto',   // auto|googlebot|facebookbot|bingbot|desktop|mobile
+  history:      [],
+  bypassCount:  0,
+  currentUrl:   '',
+  siteRules:    {},
+};
+
+// ── DOM refs ───────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const urlInput   = $('url-input');
+const goBtn      = $('go-btn');
+const frame      = $('browser-frame');
+const hero       = $('hero');
+const bpcDot     = $('bpc-dot');
+const readerToggle = $('reader-toggle');
+const toast      = $('toast');
+const progressBar = $('progress-bar');
+const autocomplete = $('autocomplete');
+
+// ── Quick access sites ─────────────────────────────────────────
+const QUICK_SITES = [
+  { name: 'NYTimes',    domain: 'nytimes.com',    icon: '📰' },
+  { name: 'Bloomberg',  domain: 'bloomberg.com',  icon: '💹' },
+  { name: 'WSJ',        domain: 'wsj.com',        icon: '📈' },
+  { name: 'FT',         domain: 'ft.com',         icon: '🏦' },
+  { name: 'Economist',  domain: 'economist.com',  icon: '🌍' },
+  { name: 'Medium',     domain: 'medium.com',     icon: '✍️' },
+  { name: 'Wired',      domain: 'wired.com',      icon: '🤖' },
+  { name: 'New Yorker', domain: 'newyorker.com',  icon: '🎭' },
+  { name: 'Science',    domain: 'sciencemag.org', icon: '🔬' },
+];
+
+// ── Init ────────────────────────────────────────────────────────
+function init() {
+  loadFromStorage();
+  renderQuickGrid();
+  updateUI();
+  loadSiteRules();
+  updateStats();
+
+  urlInput.addEventListener('keypress', e => { if (e.key === 'Enter') navigate(); });
+  urlInput.addEventListener('input', onUrlInput);
+  urlInput.addEventListener('blur', () => setTimeout(() => autocomplete.classList.remove('show'), 150));
+  goBtn.addEventListener('click', navigate);
+  readerToggle.addEventListener('click', toggleReader);
+  frame.addEventListener('load', onFrameLoad);
+  $('archive-btn').addEventListener('click', retryArchive);
+}
+
+// ── Storage helpers ─────────────────────────────────────────────
+function save() {
+  localStorage.setItem('bpc_state', JSON.stringify({
+    bpcEnabled:  state.bpcEnabled,
+    readerMode:  state.readerMode,
+    uaOverride:  state.uaOverride,
+    history:     state.history.slice(0, 50),
+    bypassCount: state.bypassCount,
+  }));
+}
+
+function loadFromStorage() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('bpc_state') || '{}');
+    Object.assign(state, saved);
+    if (!Array.isArray(state.history)) state.history = [];
+  } catch(e) { /* ignore */ }
+}
+
+// ── Fetch BPC site rules from server ───────────────────────────
+function loadSiteRules() {
+  fetch('/api/sites').then(r => r.json()).then(data => {
+    state.siteRules = data;
+    $('stat-sites').textContent = Object.keys(data).length;
+  }).catch(() => {});
+}
+
+// ── Navigate ────────────────────────────────────────────────────
+function navigate(url, opts = {}) {
+  let raw = (typeof url === 'string') ? url : urlInput.value.trim();
+  if (!raw) return;
+
+  // Search fallback
+  if (!raw.includes('.') || raw.includes(' ')) {
+    raw = 'https://www.google.com/search?q=' + encodeURIComponent(raw);
+  } else if (!/^https?:\/\//i.test(raw)) {
+    raw = 'https://' + raw;
+  }
+
+  state.currentUrl = raw;
+  urlInput.value = raw;
+  autocomplete.classList.remove('show');
+
+  let domain = '';
+  try { domain = new URL(raw).hostname.replace('www.', ''); } catch(e) {}
+
+  // ── Build proxy URL ────────────────────────────────────────
+  let proxyUrl = '/proxy?url=' + encodeURIComponent(raw);
+
+  if (opts.archive) {
+    // Use server-side archive.ph fetcher
+    proxyUrl += '&archive=1';
+    showToast('🗄️ 正嘗試 Archive.ph…');
+  } else if (state.bpcEnabled) {
+    const rule = state.siteRules[domain] || {};
+    let ua = opts.ua || (state.uaOverride !== 'auto' ? state.uaOverride : (rule.useragent || ''));
+    if (ua) proxyUrl += '&ua=' + ua;
+    if (state.readerMode) proxyUrl += '&reader=1';
+
+    // Determine toast message
+    const uaLabels = { googlebot: '🤖 Googlebot', facebookbot: '📘 Facebookbot', bingbot: '🔍 Bingbot', desktop: '🖥 Desktop', mobile: '📱 Mobile' };
+    const uaLabel = uaLabels[ua] || '';
+    if (state.siteRules[domain]) {
+      state.bypassCount++;
+      $('stat-bypassed').textContent = state.bypassCount;
+      showToast(`⚡ BPC: ${state.siteRules[domain].name || domain} ${uaLabel}`);
+    } else {
+      showToast(`🔒 代理: ${domain} ${uaLabel}`);
+    }
+  }
+
+  // Show loading
+  hero.classList.add('hidden');
+  frame.style.display = 'block';
+  document.getElementById('topbar').classList.add('loading');
+  startProgress();
+  frame.src = proxyUrl;
+
+  // Add to history
+  if (!raw.includes('google.com/search')) {
+    const existingIdx = state.history.findIndex(h => h.url === raw);
+    if (existingIdx > -1) state.history.splice(existingIdx, 1);
+    state.history.unshift({ url: raw, domain: domain, time: Date.now() });
+    if (state.history.length > 100) state.history.pop();
+    $('stat-history').textContent = state.history.length;
+  }
+
+  save();
+}
+
+function quickNav(domain) {
+  const url = 'https://' + domain;
+  urlInput.value = url;
+  navigate(url);
+}
+
+// ── Archive retry ──────────────────────────────────────────────
+function retryArchive() {
+  if (!state.currentUrl) { showToast('請先輸入網址'); return; }
+  navigate(state.currentUrl, { archive: true });
+}
+
+// ── Retry with specific UA ───────────────────────────────────
+function retryUA(ua) {
+  if (!state.currentUrl) { showToast('請先輸入網址'); return; }
+  navigate(state.currentUrl, { ua });
+  closePanel();
+}
+
+// ── Frame events ────────────────────────────────────────────────
+function onFrameLoad() {
+  stopProgress();
+  document.getElementById('topbar').classList.remove('loading');
+  try {
+    const frameUrl = frame.contentWindow.location.href;
+    if (frameUrl && frameUrl !== 'about:blank') {
+      urlInput.value = frameUrl;
+      state.currentUrl = frameUrl;
+    }
+  } catch(e) {}
+}
+
+// ── Progress bar ────────────────────────────────────────────────
+let progressTimer;
+function startProgress() {
+  progressBar.style.transition = 'none';
+  progressBar.style.width = '0%';
+  clearTimeout(progressTimer);
+  requestAnimationFrame(() => {
+    progressBar.style.transition = 'width 12s cubic-bezier(0,.7,.3,1)';
+    progressBar.style.width = '85%';
+  });
+}
+function stopProgress() {
+  progressBar.style.transition = 'width .3s ease';
+  progressBar.style.width = '100%';
+  progressTimer = setTimeout(() => {
+    progressBar.style.width = '0%';
+    progressBar.style.transition = 'none';
+  }, 400);
+}
+
+// ── Navigation ──────────────────────────────────────────────────
+function goBack()    { frame.contentWindow && frame.contentWindow.history.go(-1); }
+function goForward() { frame.contentWindow && frame.contentWindow.history.go(1); }
+function reload()    {
+  if (frame.style.display !== 'none') {
+    const s = frame.src;
+    frame.src = '';
+    frame.src = s;
+    startProgress();
+  }
+}
+
+// ── Reader mode ─────────────────────────────────────────────────
+function toggleReader() {
+  state.readerMode = !state.readerMode;
+  readerToggle.classList.toggle('active', state.readerMode);
+  showToast(state.readerMode ? '📖 閱讀模式已開啟' : '📖 閱讀模式已關閉');
+  if (state.currentUrl && frame.style.display !== 'none') {
+    navigate(state.currentUrl);
+  }
+  save();
+}
+
+// ── Autocomplete (domain search) ────────────────────────────────
+function onUrlInput() {
+  const val = urlInput.value.toLowerCase().trim();
+  if (!val || val.length < 2) {
+    autocomplete.classList.remove('show');
+    return;
+  }
+  const matches = Object.entries(state.siteRules)
+    .filter(([dom, info]) =>
+      dom.includes(val) || info.name.toLowerCase().includes(val)
+    )
+    .slice(0, 5);
+
+  if (!matches.length) {
+    autocomplete.classList.remove('show');
+    return;
+  }
+
+  autocomplete.innerHTML = matches.map(([dom, info]) => `
+    <div class="ac-item" onclick="urlInput.value='https://${dom}'; navigate('https://${dom}')">
+      <span>⚡</span>
+      <div>
+        <div>${info.name}</div>
+        <div class="ac-domain">${dom}</div>
+      </div>
+    </div>
+  `).join('');
+  autocomplete.classList.add('show');
+}
+
+// ── Toast ────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+// ── Panel manager ────────────────────────────────────────────────
+let activePanel = null;
+function openPanel(id) {
+  closePanel();
+  const panel = $('panel-' + id);
+  if (!panel) return;
+  
+  if (id === 'ext')      renderExtPanel();
+  if (id === 'hist')     renderHistPanel();
+  if (id === 'settings') renderSettingsPanel();
+
+  panel.classList.add('open');
+  $('overlay').classList.add('show');
+  activePanel = panel;
+
+  // Update nav active state
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const navBtn = $('btn-' + (id === 'settings' ? 'settings' : id));
+  if (navBtn) navBtn.classList.add('active');
+}
+
+function closePanel() {
+  if (activePanel) {
+    activePanel.classList.remove('open');
+    activePanel = null;
+  }
+  $('overlay').classList.remove('show');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+}
+
+// ── Extensions Panel ─────────────────────────────────────────────
+function renderExtPanel() {
+  const body = $('ext-body');
+  const totalSites = Object.keys(state.siteRules).length;
+  body.innerHTML = `
+    <div class="section-h">已安裝</div>
+    <div class="card">
+      <div style="font-size:26px;">⚡</div>
+      <div class="card-info">
+        <h4>Bypass Paywalls Clean <span class="bpc-badge">內建</span></h4>
+        <p>繞過 ${totalSites} 個付費牆網站的限制</p>
+      </div>
+      <div class="toggle ${state.bpcEnabled ? 'on' : ''}" id="bpc-toggle" onclick="toggleBPC(this)" aria-label="啟用/停用 BPC"></div>
+    </div>
+    <div class="card">
+      <div style="font-size:26px;">📖</div>
+      <div class="card-info">
+        <h4>Reader Mode</h4>
+        <p>文章閱讀視圖，去除廣告與側欄干擾</p>
+      </div>
+      <div class="toggle ${state.readerMode ? 'on' : ''}" onclick="toggleReader(); renderExtPanel()" aria-label="Reader Mode"></div>
+    </div>
+    <div class="section-h">支援的熱門網站</div>
+    ${Object.entries(state.siteRules).slice(0,20).map(([dom, info]) => `
+      <div class="hist-item" onclick="quickNav('${dom}'); closePanel()">
+        <span class="hist-icon">⚡</span>
+        <div class="hist-info">
+          <div class="hist-url">${info.name}</div>
+          <div class="hist-time">${dom}${info.useragent ? ' · ' + info.useragent : ''}</div>
+        </div>
+      </div>
+    `).join('')}
+    <p style="color:var(--text-dim);font-size:12px;text-align:center;padding:12px 0">… 共 ${totalSites} 個網站</p>
+  `;
+}
+
+function toggleBPC(el) {
+  state.bpcEnabled = !state.bpcEnabled;
+  el.classList.toggle('on', state.bpcEnabled);
+  bpcDot.classList.toggle('off', !state.bpcEnabled);
+  showToast(state.bpcEnabled ? '⚡ BPC 已啟用' : '⛔ BPC 已停用');
+  save();
+}
+
+// ── History Panel ──────────────────────────────────────────────
+function renderHistPanel() {
+  const body = $('hist-body');
+  if (!state.history.length) {
+    body.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-dim)">
+      <div style="font-size:40px;margin-bottom:12px">🕐</div>
+      <p>尚無瀏覽記錄</p></div>`;
+    return;
+  }
+
+  const clearBtn = `<button onclick="clearHistory()" style="width:100%;padding:10px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.3);border-radius:10px;color:var(--red);font-family:inherit;font-size:13px;margin-bottom:14px;cursor:pointer">🗑️ 清除所有記錄</button>`;
+
+  body.innerHTML = clearBtn + state.history.map((h, i) => `
+    <div class="hist-item">
+      <span class="hist-icon">🌐</span>
+      <div class="hist-info" onclick="navigate('${h.url}'); closePanel()">
+        <div class="hist-url">${h.domain || h.url}</div>
+        <div class="hist-time">${formatTime(h.time)}</div>
+      </div>
+      <span class="hist-del" onclick="deleteHistory(${i}); renderHistPanel()" aria-label="刪除">✕</span>
+    </div>
+  `).join('');
+}
+
+function clearHistory() {
+  state.history = [];
+  $('stat-history').textContent = 0;
+  save();
+  renderHistPanel();
+}
+
+function deleteHistory(i) {
+  state.history.splice(i, 1);
+  $('stat-history').textContent = state.history.length;
+  save();
+}
+
+function formatTime(ts) {
+  const d = new Date(ts);
+  const now = new Date();
+  const diff = now - d;
+  if (diff < 60000) return '剛剛';
+  if (diff < 3600000) return `${Math.floor(diff/60000)} 分鐘前`;
+  if (d.toDateString() === now.toDateString()) return d.toLocaleTimeString('zh-TW', {hour:'2-digit',minute:'2-digit'});
+  return d.toLocaleDateString('zh-TW');
+}
+
+// ── Settings Panel ──────────────────────────────────────────────
+function renderSettingsPanel() {
+  const body = $('settings-body');
+  const cur = state.currentUrl;
+  body.innerHTML = `
+    <div class="section-h">當前頁面快速重試</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+      <button onclick="retryUA('googlebot')" style="padding:9px 14px;background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);border-radius:10px;color:#58a6ff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">🤖 Googlebot</button>
+      <button onclick="retryUA('facebookbot')" style="padding:9px 14px;background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);border-radius:10px;color:#58a6ff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">📘 Facebookbot</button>
+      <button onclick="retryUA('bingbot')" style="padding:9px 14px;background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);border-radius:10px;color:#58a6ff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">🔍 Bingbot</button>
+      <button onclick="retryUA('desktop')" style="padding:9px 14px;background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);border-radius:10px;color:#58a6ff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">🖥 Desktop</button>
+      <button onclick="retryArchive()" style="padding:9px 14px;background:rgba(63,185,80,.12);border:1px solid rgba(63,185,80,.3);border-radius:10px;color:#3fb950;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer">🗄️ Archive.ph</button>
+    </div>
+
+    <div class="section-h">預設 UA 偽裝</div>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">User-Agent 策略</div>
+        <div class="setting-sub">影響網站如何識別您的請求</div>
+      </div>
+      <select class="setting-select" id="ua-select" onchange="setUA(this.value)">
+        <option value="auto" ${state.uaOverride==='auto'?'selected':''}>自動 (依 BPC 規則)</option>
+        <option value="googlebot" ${state.uaOverride==='googlebot'?'selected':''}>🤖 Googlebot</option>
+        <option value="facebookbot" ${state.uaOverride==='facebookbot'?'selected':''}>📘 Facebookbot</option>
+        <option value="bingbot" ${state.uaOverride==='bingbot'?'selected':''}>🔍 Bingbot</option>
+        <option value="desktop" ${state.uaOverride==='desktop'?'selected':''}>🖥 桌面瀏覽器</option>
+        <option value="mobile" ${state.uaOverride==='mobile'?'selected':''}>📱 手機瀏覽器</option>
+      </select>
+    </div>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">BPC Bypass</div>
+        <div class="setting-sub">自動偵測並繞過付費牆</div>
+      </div>
+      <div class="toggle ${state.bpcEnabled?'on':''}" onclick="toggleBPC(this, true)" id="bpc-s-toggle"></div>
+    </div>
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">閱讀模式</div>
+        <div class="setting-sub">精簡文章版面，移除廣告</div>
+      </div>
+      <div class="toggle ${state.readerMode?'on':''}" onclick="toggleReader(); renderSettingsPanel()"></div>
+    </div>
+
+    <div class="section-h">外部備用方案</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+      ${[
+        {label:'🗄️ Archive.ph', url: `https://archive.ph/newest/${cur}`},
+        {label:'📖 Freedium', url: `https://freedium.cfd/${cur}`},
+        {label:'📏 12ft.io', url: `https://12ft.io/${cur}`},
+        {label:'🏛️ Wayback', url: `https://web.archive.org/web/*/${cur}`},
+      ].map(b => `
+        <a href="${b.url}" target="_parent" style="padding:8px 14px;background:var(--glass);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;text-decoration:none;font-weight:600">${b.label}</a>
+      `).join('')}
+    </div>
+
+    <div class="section-h">關於</div>
+    <div class="card" style="flex-direction:column;align-items:flex-start;gap:6px">
+      <div style="color:var(--text-bright);font-weight:600">BPC Mobile Reader v3.0</div>
+      <div style="font-size:12px;color:var(--text-dim);line-height:1.6">
+        整合 Bypass Paywalls Clean 的手機閱讀器<br>
+        v3: 完整 client-side BPC script 注入<br>
+        伺服器端 paywall script 封鎖<br>
+        fetch/XHR 攔截 + UA 自動偽裝<br>
+        ⚡ 支援 ${Object.keys(state.siteRules).length || 462} 個付費牆網站
+      </div>
+    </div>
+  `;
+}
+
+function setUA(val) {
+  state.uaOverride = val;
+  showToast('UA 已設定: ' + val);
+  save();
+}
+
+
+function openFallback(baseUrl) {
+  const cur = state.currentUrl || '';
+  const url = cur ? baseUrl + '/' + cur : baseUrl;
+  navigate(url);
+  closePanel();
+}
+
+// ── Quick Grid ──────────────────────────────────────────────────
+function renderQuickGrid() {
+  const grid = $('quick-grid');
+  grid.innerHTML = QUICK_SITES.map(s => `
+    <div class="quick-btn" onclick="quickNav('${s.domain}')">
+      <span class="qb-icon">${s.icon}</span>
+      <span class="qb-name">${s.name}</span>
+      <span class="qb-badge">BPC</span>
+    </div>
+  `).join('');
+}
+
+// ── UI helpers ──────────────────────────────────────────────────
+function updateUI() {
+  bpcDot.classList.toggle('off', !state.bpcEnabled);
+  readerToggle.classList.toggle('active', state.readerMode);
+}
+
+function updateStats() {
+  $('stat-history').textContent = state.history.length;
+  $('stat-bypassed').textContent = state.bypassCount;
+}
+
+// ── Home button (click logo) ────────────────────────────────────
+document.querySelector('.logo').addEventListener('click', () => {
+  frame.style.display = 'none';
+  frame.src = '';
+  hero.classList.remove('hidden');
+  urlInput.value = '';
+  state.currentUrl = '';
+  stopProgress();
+  document.getElementById('topbar').classList.remove('loading');
+});
+
+// ── Swipe down on panel to close ───────────────────────────────
+let touchStartY = 0;
+document.querySelectorAll('.panel').forEach(panel => {
+  panel.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  panel.addEventListener('touchmove', e => {
+    const dy = e.touches[0].clientY - touchStartY;
+    if (dy > 60) closePanel();
+  }, { passive: true });
+});
+
+// ── Start ───────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
