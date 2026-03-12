@@ -67,13 +67,14 @@ UA_PROFILES = {
 
 # ── Load BPC site rules ─────────────────────────────────────────────────────
 BPC_SITES = {}
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+
 def load_sites():
     global BPC_SITES
-    # Try multiple common relative paths in Vercel/Local
+    # Try local directory first (I copied it there)
     paths = [
-        os.path.join(_script_dir, '..', 'rules', 'bpc_sites.json'),
-        os.path.join(_script_dir, 'rules', 'bpc_sites.json'),
-        os.path.join(os.getcwd(), 'rules', 'bpc_sites.json')
+        os.path.join(_script_dir, 'bpc_sites.json'),
+        os.path.join(_script_dir, '..', 'rules', 'bpc_sites.json')
     ]
     for p in paths:
         if os.path.exists(p):
@@ -101,7 +102,7 @@ def get_profile(domain, ua_override=None):
     clean = domain.replace('www.', '')
     if 'economist.com' in clean:
         return UA_PROFILES['economist']
-    rule = BPC_SITES.get(clean, {})
+    rule = BPC_SITES.get(clean, {}) if BPC_SITES else {}
     ua_type = ua_override if ua_override and ua_override != 'auto' else rule.get('useragent')
     return UA_PROFILES.get(UA_MAP.get(ua_type, 'chrome_mobile'), UA_PROFILES['chrome_mobile'])
 
@@ -517,16 +518,36 @@ class handler(http.server.BaseHTTPRequestHandler):
         pass
 
     def do_GET(self):
-        if not BPC_SITES: load_sites()
-        parsed = urllib.parse.urlparse(self.path)
-        if parsed.path == '/proxy':
-            self.handle_proxy(parsed)
-        elif parsed.path == '/api/sites':
-            self.serve_json(BPC_SITES)
-        elif parsed.path == '/api/status':
-            self.serve_json({'status': 'ok', 'sites': len(BPC_SITES), 'version': '3.1v'})
-        else:
-            self.send_error(404)
+        try:
+            if not BPC_SITES: load_sites()
+            parsed = urllib.parse.urlparse(self.path)
+            
+            # Special debug check
+            if parsed.path == '/api/debug':
+                self.serve_json({
+                    'cwd': os.getcwd(),
+                    'dir': _script_dir,
+                    'files': os.listdir(_script_dir),
+                    'sites_loaded': len(BPC_SITES) > 0,
+                    'sites_count': len(BPC_SITES)
+                })
+                return
+
+            if '/proxy' in parsed.path:
+                self.handle_proxy(parsed)
+            elif '/api/sites' in parsed.path:
+                self.serve_json(BPC_SITES)
+            elif '/api/status' in parsed.path:
+                self.serve_json({'status': 'ok', 'sites': len(BPC_SITES), 'version': '3.1v2'})
+            else:
+                self.send_error(404, "Path not matched in handler")
+        except Exception as e:
+            import traceback
+            err_msg = traceback.format_exc()
+            self.send_response(500)
+            self.send_header('Content-Type', 'text/plain; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(f"BPC Backend Error:\n\n{err_msg}".encode('utf-8'))
 
     def serve_json(self, data):
         out = json.dumps(data).encode('utf-8')

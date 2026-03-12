@@ -1,0 +1,1850 @@
+{
+  "60millions-mag.com": {
+    "name": "60 Millions de consommateurs",
+    "useragent": null
+  },
+  "aachener-zeitung.de": {
+    "name": "Aachener Zeitung",
+    "useragent": null
+  },
+  "abcmais.com": {
+    "name": "Abcmais.com",
+    "useragent": null
+  },
+  "actu.fr": {
+    "name": "Actu.fr",
+    "useragent": null
+  },
+  "adweek.com": {
+    "name": "Adweek",
+    "useragent": null
+  },
+  "aftenposten.no": {
+    "name": "Aftenposten.no",
+    "useragent": "googlebot"
+  },
+  "al-monitor.com": {
+    "name": "Al-Monitor",
+    "useragent": null
+  },
+  "abqjournal.com": {
+    "name": "Albuquerque Journal",
+    "useragent": null
+  },
+  "alternatives-economiques.fr": {
+    "name": "Alternatives Economiques",
+    "useragent": null
+  },
+  "ambito.com": {
+    "name": "Ámbito",
+    "useragent": null
+  },
+  "americastestkitchen.com": {
+    "name": "America's Test Kitchen",
+    "useragent": null
+  },
+  "americanaffairsjournal.org": {
+    "name": "American Affairs",
+    "useragent": null
+  },
+  "americanbanker.com": {
+    "name": "American Banker",
+    "useragent": null
+  },
+  "americanpurpose.com": {
+    "name": "American Purpose",
+    "useragent": null
+  },
+  "aoc.media": {
+    "name": "Aoc.media",
+    "useragent": null
+  },
+  "artforum.com": {
+    "name": "Artforum",
+    "useragent": null
+  },
+  "artnet.com": {
+    "name": "Artnet",
+    "useragent": null
+  },
+  "aerztezeitung.de": {
+    "name": "Ärzte Zeitung",
+    "useragent": null
+  },
+  "atavist.com": {
+    "name": "Atavist Magazine",
+    "useragent": null
+  },
+  "atlantico.fr": {
+    "name": "Atlantico.fr",
+    "useragent": null
+  },
+  "autocar.co.uk": {
+    "name": "Autocar.co.uk",
+    "useragent": null
+  },
+  "autohebdo.fr": {
+    "name": "AutoHebdo.fr",
+    "useragent": null
+  },
+  "automobilwoche.de": {
+    "name": "Piano.io",
+    "useragent": null
+  },
+  "autoplus.fr": {
+    "name": "AutoPlus.fr",
+    "useragent": null
+  },
+  "autosport.com": {
+    "name": "Autosport",
+    "useragent": null
+  },
+  "axios.com": {
+    "name": "Axios",
+    "useragent": null
+  },
+  "bnn.de": {
+    "name": "Badische Neueste Nachrichten",
+    "useragent": null
+  },
+  "balkaninsight.com": {
+    "name": "Balkan Insight",
+    "useragent": null
+  },
+  "barandbench.com": {
+    "name": "Bar and Bench",
+    "useragent": null
+  },
+  "barrons.com": {
+    "name": "Barron's",
+    "useragent": null
+  },
+  "historyextra.com": {
+    "name": "BBC History Extra",
+    "useragent": null
+  },
+  "bbc.com": {
+    "name": "BBC USA",
+    "useragent": null
+  },
+  "benzinga.com": {
+    "name": "Benzinga",
+    "useragent": null
+  },
+  "bt.no": {
+    "name": "Bergens Tidende",
+    "useragent": "facebookbot"
+  },
+  "berliner-zeitung.de": {
+    "name": "Berliner Zeitung",
+    "useragent": null
+  },
+  "bhaskar.com": {
+    "name": "Bhaskar",
+    "useragent": null
+  },
+  "bild.de": {
+    "name": "Bild",
+    "useragent": null
+  },
+  "theblaze.com": {
+    "name": "Blaze Media",
+    "useragent": null
+  },
+  "bloomberg.com": {
+    "name": "Bloomberg",
+    "useragent": null
+  },
+  "bloombergadria.com": {
+    "name": "Bloomberg Adria",
+    "useragent": null
+  },
+  "boersen-zeitung.de": {
+    "name": "Börsen-Zeitung",
+    "useragent": null
+  },
+  "brill.com": {
+    "name": "Brill",
+    "useragent": "googlebot"
+  },
+  "thebulletin.org": {
+    "name": "Bulletin of the Atomic Scientists",
+    "useragent": null
+  },
+  "businessam.be": {
+    "name": "BusinessAM.be",
+    "useragent": null
+  },
+  "businessdesk.co.nz": {
+    "name": "BusinessDesk.co.nz",
+    "useragent": null
+  },
+  "businessinsider.com": {
+    "name": "Business Insider",
+    "useragent": "googlebot"
+  },
+  "businessinsider.jp": {
+    "name": "Business Insider Japan",
+    "useragent": null
+  },
+  "businessinsider.nl": {
+    "name": "Business Insider Nederland",
+    "useragent": null
+  },
+  "businesspost.ie": {
+    "name": "Business Post.ie",
+    "useragent": null
+  },
+  "business-standard.com": {
+    "name": "Business Standard",
+    "useragent": null
+  },
+  "capital.bg": {
+    "name": "Capital.bg",
+    "useragent": null
+  },
+  "capital.fr": {
+    "name": "Capital.fr",
+    "useragent": null
+  },
+  "caravanmagazine.in": {
+    "name": "CaravanMagazine.in",
+    "useragent": null
+  },
+  "cartacapital.com.br": {
+    "name": "CartaCapital",
+    "useragent": null
+  },
+  "causeur.fr": {
+    "name": "Causeur",
+    "useragent": null
+  },
+  "challenges.fr": {
+    "name": "Challenges",
+    "useragent": null
+  },
+  "charliehebdo.fr": {
+    "name": "Charlie Hebdo",
+    "useragent": null
+  },
+  "cen.acs.org": {
+    "name": "Chemical & Engineering News",
+    "useragent": null
+  },
+  "cicero.de": {
+    "name": "Cicero.de",
+    "useragent": null
+  },
+  "citywire.com": {
+    "name": "Citywire",
+    "useragent": "facebookbot"
+  },
+  "cnbc.com": {
+    "name": "CNBC",
+    "useragent": null
+  },
+  "cnn.com": {
+    "name": "CNN",
+    "useragent": null
+  },
+  "commentary.org": {
+    "name": "Commentary Magazine",
+    "useragent": null
+  },
+  "cw.com.tw": {
+    "name": "CommonWealth Magazine Taiwan",
+    "useragent": null
+  },
+  "connaissancedesarts.com": {
+    "name": "Connaissance des Arts",
+    "useragent": null
+  },
+  "correiodopovo.com.br": {
+    "name": "Correio do Povo",
+    "useragent": null
+  },
+  "corriere.it": {
+    "name": "Corriere della Sera",
+    "useragent": null
+  },
+  "corrieredellosport.it": {
+    "name": "Corriere dello Sport",
+    "useragent": null
+  },
+  "cosmopolitan.fr": {
+    "name": "Cosmopolitan.fr",
+    "useragent": null
+  },
+  "courrierinternational.com": {
+    "name": "Courrier international",
+    "useragent": null
+  },
+  "crusoe.com.br": {
+    "name": "Crusoe.com.br",
+    "useragent": null
+  },
+  "etc.se": {
+    "name": "Dagens ETC",
+    "useragent": null
+  },
+  "cyclingnews.com": {
+    "name": "CyclingNews",
+    "useragent": null
+  },
+  "dagsavisen.no": {
+    "name": "Dagsavisen.no",
+    "useragent": "googlebot"
+  },
+  "dailyherald.com": {
+    "name": "Daily Herald",
+    "useragent": null
+  },
+  "tijd.be": {
+    "name": "De Tijd",
+    "useragent": null
+  },
+  "decanter.com": {
+    "name": "Decanter",
+    "useragent": null
+  },
+  "defector.com": {
+    "name": "Defector",
+    "useragent": null
+  },
+  "denik.cz": {
+    "name": "Denik.cz",
+    "useragent": null
+  },
+  "freitag.de": {
+    "name": "Der Freitag",
+    "useragent": null
+  },
+  "spiegel.de": {
+    "name": "Der Spiegel",
+    "useragent": null
+  },
+  "derstandard.at": {
+    "name": "Der Standard.at",
+    "useragent": null
+  },
+  "tagesspiegel.de": {
+    "name": "Der Tagesspiegel",
+    "useragent": null
+  },
+  "diariodenavarra.es": {
+    "name": "Diario de Navarra",
+    "useragent": null
+  },
+  "dn.pt": {
+    "name": "Diário de Notícias",
+    "useragent": null
+  },
+  "df.cl": {
+    "name": "Diario Financiero",
+    "useragent": "googlebot"
+  },
+  "diepresse.com": {
+    "name": "Die Presse",
+    "useragent": null
+  },
+  "rheinpfalz.de": {
+    "name": "Die Rheinpfalz",
+    "useragent": "googlebot"
+  },
+  "welt.de": {
+    "name": "Die Welt",
+    "useragent": null
+  },
+  "zeit.de": {
+    "name": "Die Zeit",
+    "useragent": null
+  },
+  "digitimes.com": {
+    "name": "DigiTimes Asia",
+    "useragent": "googlebot"
+  },
+  "discovermagazine.com": {
+    "name": "Discover Magazine",
+    "useragent": null
+  },
+  "dnevnik.bg": {
+    "name": "Dnevnik.bg",
+    "useragent": null
+  },
+  "editorialedomani.it": {
+    "name": "Domani",
+    "useragent": null
+  },
+  "doorbraak.be": {
+    "name": "Doorbraak.be",
+    "useragent": null
+  },
+  "dwell.com": {
+    "name": "Dwell",
+    "useragent": null
+  },
+  "eastwest.eu": {
+    "name": "Eastwest.eu",
+    "useragent": null
+  },
+  "elconfidencial.com": {
+    "name": "El Confidencial",
+    "useragent": null
+  },
+  "cronista.com": {
+    "name": "El Cronista",
+    "useragent": null
+  },
+  "eldeber.com.bo": {
+    "name": "El Deber.com.bo",
+    "useragent": null
+  },
+  "eldiario.es": {
+    "name": "El Diario.es",
+    "useragent": null
+  },
+  "elespanol.com": {
+    "name": "El Español",
+    "useragent": null
+  },
+  "elespectador.com": {
+    "name": "El Espectador",
+    "useragent": null
+  },
+  "elmercurio.com": {
+    "name": "El Mercurio",
+    "useragent": "googlebot"
+  },
+  "elobservador.com.uy": {
+    "name": "El Observador.com.uy",
+    "useragent": null
+  },
+  "elpais.com": {
+    "name": "El País",
+    "useragent": null
+  },
+  "elpais.com.uy": {
+    "name": "El País.com.uy",
+    "useragent": null
+  },
+  "eltiempo.com": {
+    "name": "El Tiempo",
+    "useragent": null
+  },
+  "eltribuno.com": {
+    "name": "El Tribuno",
+    "useragent": null
+  },
+  "eluniversal.com.mx": {
+    "name": "El Universal.com.mx",
+    "useragent": null
+  },
+  "eluniverso.com": {
+    "name": "El Universo",
+    "useragent": null
+  },
+  "elle.fr": {
+    "name": "Elle.fr",
+    "useragent": null
+  },
+  "britannica.com": {
+    "name": "Encyclopedia Britannica",
+    "useragent": null
+  },
+  "enotes.com": {
+    "name": "eNotes",
+    "useragent": null
+  },
+  "entrepreneur.com": {
+    "name": "Entrepreneur",
+    "useragent": null
+  },
+  "espn.com": {
+    "name": "ESPN USA",
+    "useragent": null
+  },
+  "esprit.presse.fr": {
+    "name": "Esprit",
+    "useragent": null
+  },
+  "em.com.br": {
+    "name": "Estado de Minas",
+    "useragent": null
+  },
+  "euobserver.com": {
+    "name": "EUobserver",
+    "useragent": null
+  },
+  "standard.co.uk": {
+    "name": "Evening Standard",
+    "useragent": null
+  },
+  "exame.com": {
+    "name": "Exame",
+    "useragent": null
+  },
+  "expresso.pt": {
+    "name": "Expresso.pt",
+    "useragent": null
+  },
+  "fastcompany.com": {
+    "name": "Fast Company",
+    "useragent": null
+  },
+  "fd.nl": {
+    "name": "Fd.nl",
+    "useragent": "googlebot"
+  },
+  "fieldandstream.com": {
+    "name": "Field & Stream",
+    "useragent": null
+  },
+  "fnlondon.com": {
+    "name": "Financial News",
+    "useragent": null
+  },
+  "ft.com": {
+    "name": "Financial Times",
+    "useragent": null
+  },
+  "firstthings.com": {
+    "name": "First Things",
+    "useragent": null
+  },
+  "fmrmagazine.com": {
+    "name": "FMR",
+    "useragent": null
+  },
+  "focusplus.de": {
+    "name": "FocusPlus.de",
+    "useragent": null
+  },
+  "fokus.se": {
+    "name": "Fokus.se",
+    "useragent": null
+  },
+  "forbes.com": {
+    "name": "Forbes",
+    "useragent": null
+  },
+  "forbes.com.au": {
+    "name": "Forbes Australia",
+    "useragent": null
+  },
+  "forbes.ua": {
+    "name": "Forbes.ua",
+    "useragent": null
+  },
+  "foreignaffairs.com": {
+    "name": "Foreign Affairs",
+    "useragent": null
+  },
+  "foreignpolicy.com": {
+    "name": "Foreign Policy",
+    "useragent": null
+  },
+  "fortune.com": {
+    "name": "Fortune",
+    "useragent": null
+  },
+  "foxnews.com": {
+    "name": "Fox News",
+    "useragent": null
+  },
+  "faz.net": {
+    "name": "Frankfurter Allgemeine Zeitung",
+    "useragent": null
+  },
+  "gauchazh.clicrbs.com.br": {
+    "name": "GaúchaZH",
+    "useragent": null
+  },
+  "gazetadopovo.com.br": {
+    "name": "Gazeta do Povo",
+    "useragent": null
+  },
+  "gbnews.com": {
+    "name": "GB News",
+    "useragent": null
+  },
+  "glassdoor.com": {
+    "name": "Glassdoor",
+    "useragent": null
+  },
+  "globes.co.il": {
+    "name": "Globes",
+    "useragent": null
+  },
+  "granta.com": {
+    "name": "Granta Magazine",
+    "useragent": null
+  },
+  "groene.nl": {
+    "name": "Groene Amsterdammer",
+    "useragent": "googlebot"
+  },
+  "abril.com.br": {
+    "name": "Grupo Abril",
+    "useragent": null
+  },
+  "handelsblatt.com": {
+    "name": "Handelsblatt",
+    "useragent": "googlebot"
+  },
+  "harpers.org": {
+    "name": "Harper's Magazine",
+    "useragent": null
+  },
+  "hbr.org": {
+    "name": "Piano.io",
+    "useragent": null
+  },
+  "heise.de": {
+    "name": "Heise online",
+    "useragent": null
+  },
+  "hln.be": {
+    "name": "Het Laatste Nieuws",
+    "useragent": null
+  },
+  "hindustantimes.com": {
+    "name": "Hindustan Times",
+    "useragent": null
+  },
+  "historia.fr": {
+    "name": "Historia.fr",
+    "useragent": null
+  },
+  "historytoday.com": {
+    "name": "History Today",
+    "useragent": null
+  },
+  "hola.com": {
+    "name": "Hola",
+    "useragent": null
+  },
+  "staradvertiser.com": {
+    "name": "Honolulu Star-Advertiser",
+    "useragent": null
+  },
+  "ilfattoquotidiano.it": {
+    "name": "Il Fatto Quotidiano",
+    "useragent": null
+  },
+  "ilfoglio.it": {
+    "name": "Il Foglio",
+    "useragent": null
+  },
+  "ilmanifesto.it": {
+    "name": "Il Manifesto",
+    "useragent": "googlebot"
+  },
+  "ilsole24ore.com": {
+    "name": "Il Sole 24 Ore",
+    "useragent": null
+  },
+  "inc.com": {
+    "name": "Inc.com",
+    "useragent": null
+  },
+  "inc42.com": {
+    "name": "Inc42",
+    "useragent": null
+  },
+  "indiatoday.in": {
+    "name": "India Today",
+    "useragent": null
+  },
+  "inews.co.uk": {
+    "name": "iNews",
+    "useragent": null
+  },
+  "infolibre.es": {
+    "name": "InfoLibre.es",
+    "useragent": "googlebot"
+  },
+  "inkl.com": {
+    "name": "Inkl",
+    "useragent": null
+  },
+  "insidehighered.com": {
+    "name": "Inside Higher Ed",
+    "useragent": null
+  },
+  "iai.tv": {
+    "name": "Institute of Art and Ideas",
+    "useragent": null
+  },
+  "interestingengineering.com": {
+    "name": "Interesting Engineering",
+    "useragent": null
+  },
+  "internazionale.it": {
+    "name": "Internazionale.it",
+    "useragent": null
+  },
+  "investors.com": {
+    "name": "Investor's Business Daily",
+    "useragent": null
+  },
+  "investorschronicle.co.uk": {
+    "name": "Investors' Chronicle",
+    "useragent": null
+  },
+  "ipolitics.ca": {
+    "name": "iPolitics.ca",
+    "useragent": null
+  },
+  "independent.ie": {
+    "name": "Irish Independent",
+    "useragent": null
+  },
+  "italiaoggi.it": {
+    "name": "Italia Oggi",
+    "useragent": null
+  },
+  "jacobin.de": {
+    "name": "Jacobin.de",
+    "useragent": null
+  },
+  "jazzwise.com": {
+    "name": "Jazzwise",
+    "useragent": "googlebot"
+  },
+  "jeuneafrique.com": {
+    "name": "Jeune Afrique",
+    "useragent": null
+  },
+  "kathimerini.gr": {
+    "name": "Kathimerini.gr",
+    "useragent": null
+  },
+  "ksta.de": {
+    "name": "Kölner Stadt-Anzeiger",
+    "useragent": null
+  },
+  "rundschau-online.de": {
+    "name": "Kölnische Rundschau",
+    "useragent": null
+  },
+  "kompas.id": {
+    "name": "Kompas.id",
+    "useragent": null
+  },
+  "krautreporter.de": {
+    "name": "Krautreporter.de",
+    "useragent": null
+  },
+  "kurier.at": {
+    "name": "Kurier.at",
+    "useragent": null
+  },
+  "lecho.be": {
+    "name": "L'Écho",
+    "useragent": null
+  },
+  "lequipe.fr": {
+    "name": "L'Équipe.fr",
+    "useragent": null
+  },
+  "lexpress.fr": {
+    "name": "L'Express",
+    "useragent": null
+  },
+  "humanite.fr": {
+    "name": "L'Humanité",
+    "useragent": null
+  },
+  "linforme.com": {
+    "name": "L'Informé",
+    "useragent": "googlebot"
+  },
+  "loeildelaphotographie.com": {
+    "name": "L'Oeil de la Photographie",
+    "useragent": null
+  },
+  "lopinion.fr": {
+    "name": "L'Opinion",
+    "useragent": "googlebot"
+  },
+  "la-croix.com": {
+    "name": "La Croix",
+    "useragent": null
+  },
+  "ladiaria.com.uy": {
+    "name": "La Diaria.com.uy",
+    "useragent": "googlebot"
+  },
+  "lagaceta.com.ar": {
+    "name": "La Gaceta.com.ar",
+    "useragent": "facebookbot"
+  },
+  "gazzetta.it": {
+    "name": "La Gazzetta dello Sport",
+    "useragent": null
+  },
+  "lanacion.com.ar": {
+    "name": "La Nación",
+    "useragent": null
+  },
+  "lasegunda.com": {
+    "name": "La Segunda",
+    "useragent": null
+  },
+  "latercera.com": {
+    "name": "La Tercera",
+    "useragent": null
+  },
+  "lavanguardia.com": {
+    "name": "La Vanguardia",
+    "useragent": null
+  },
+  "reviewjournal.com": {
+    "name": "Las Vegas Review-Journal",
+    "useragent": null
+  },
+  "law.com": {
+    "name": "Law.com",
+    "useragent": "googlebot"
+  },
+  "lecanardenchaine.fr": {
+    "name": "Le Canard enchaîné.fr",
+    "useragent": "googlebot"
+  },
+  "lecourrierdesstrateges.fr": {
+    "name": "Le Courrier des Stratèges",
+    "useragent": null
+  },
+  "ledevoir.com": {
+    "name": "Le Devoir",
+    "useragent": null
+  },
+  "lefigaro.fr": {
+    "name": "Le Figaro",
+    "useragent": null
+  },
+  "legrandcontinent.eu": {
+    "name": "Le Grand Continent",
+    "useragent": null
+  },
+  "lejdd.fr": {
+    "name": "Le Journal du Dimanche",
+    "useragent": null
+  },
+  "journaldunet.com": {
+    "name": "Le Journal du Net",
+    "useragent": null
+  },
+  "lemonde.fr": {
+    "name": "Le Monde.fr",
+    "useragent": null
+  },
+  "diplomatique.org.br": {
+    "name": "Le Monde Diplomatique Brasil",
+    "useragent": null
+  },
+  "lenouveleconomiste.fr": {
+    "name": "Le Nouvel Economiste",
+    "useragent": "googlebot"
+  },
+  "leparisien.fr": {
+    "name": "Le Parisien",
+    "useragent": "googlebot"
+  },
+  "lepoint.fr": {
+    "name": "Le Point",
+    "useragent": null
+  },
+  "lerevenu.com": {
+    "name": "Le Revenu",
+    "useragent": null
+  },
+  "letelegramme.fr": {
+    "name": "Le Télégramme",
+    "useragent": null
+  },
+  "letemps.ch": {
+    "name": "Le Temps.ch",
+    "useragent": null
+  },
+  "le1hebdo.fr": {
+    "name": "Le1Hebdo.fr",
+    "useragent": null
+  },
+  "lesechos.fr": {
+    "name": "Les Échos",
+    "useragent": null
+  },
+  "lesinrocks.com": {
+    "name": "Les Inrockuptibles",
+    "useragent": null
+  },
+  "liberation.fr": {
+    "name": "Libération.fr",
+    "useragent": null
+  },
+  "linda.nl": {
+    "name": "Linda.nl",
+    "useragent": null
+  },
+  "literaryreview.co.uk": {
+    "name": "Literary Review",
+    "useragent": null
+  },
+  "livelaw.in": {
+    "name": "Live Law",
+    "useragent": null
+  },
+  "livemint.com": {
+    "name": "LiveMint",
+    "useragent": null
+  },
+  "loebclassics.com": {
+    "name": "Loeb Classical Library",
+    "useragent": null
+  },
+  "lrb.co.uk": {
+    "name": "London Review of Books",
+    "useragent": null
+  },
+  "latimes.com": {
+    "name": "Los Angeles Times",
+    "useragent": null
+  },
+  "macrobusiness.com.au": {
+    "name": "MacroBusiness.com.au",
+    "useragent": null
+  },
+  "mainichi.jp": {
+    "name": "Mainichi Shimbun",
+    "useragent": "googlebot"
+  },
+  "manoramaonline.com": {
+    "name": "Malayala Manorama",
+    "useragent": null
+  },
+  "marianne.net": {
+    "name": "Marianne.net",
+    "useragent": null
+  },
+  "marketwatch.com": {
+    "name": "MarketWatch",
+    "useragent": null
+  },
+  "medscape.com": {
+    "name": "Medscape",
+    "useragent": null
+  },
+  "mexiconewsdaily.com": {
+    "name": "Mexico News Daily",
+    "useragent": null
+  },
+  "mid-day.com": {
+    "name": "Mid-Day",
+    "useragent": null
+  },
+  "milanofinanza.it": {
+    "name": "MilanoFinanza.it",
+    "useragent": null
+  },
+  "milenio.com": {
+    "name": "Milenio",
+    "useragent": null
+  },
+  "sloanreview.mit.edu": {
+    "name": "MIT Sloan Management Review",
+    "useragent": null
+  },
+  "technologyreview.com": {
+    "name": "MIT Technology Review",
+    "useragent": null
+  },
+  "mittelbayerische.de": {
+    "name": "Mittelbayerische Zeitung",
+    "useragent": null
+  },
+  "mnimarkets.com": {
+    "name": "MNI Market News",
+    "useragent": null
+  },
+  "monocle.com": {
+    "name": "Monocle",
+    "useragent": "googlebot"
+  },
+  "motorsportmagazine.com": {
+    "name": "Motor Sport Magazine",
+    "useragent": null
+  },
+  "mv-voice.com": {
+    "name": "Mountain View Voice",
+    "useragent": null
+  },
+  "mundodeportivo.com": {
+    "name": "Mundo Deportivo",
+    "useragent": null
+  },
+  "musicomh.com": {
+    "name": "MusicOMH",
+    "useragent": null
+  },
+  "nationalgeographic.com": {
+    "name": "National Geographic USA",
+    "useragent": null
+  },
+  "nationalreview.com": {
+    "name": "National Review",
+    "useragent": null
+  },
+  "nautil.us": {
+    "name": "Nautilus",
+    "useragent": null
+  },
+  "nature.com": {
+    "name": "Nature",
+    "useragent": null
+  },
+  "ndtvprofit.com": {
+    "name": "NDTV Profit",
+    "useragent": null
+  },
+  "nw.de": {
+    "name": "Neue Westfälische",
+    "useragent": null
+  },
+  "nzz.ch": {
+    "name": "Neue Zürcher Zeitung",
+    "useragent": null
+  },
+  "newscientist.com": {
+    "name": "New Scientist",
+    "useragent": null
+  },
+  "nv.ua": {
+    "name": "New Voice",
+    "useragent": null
+  },
+  "nypost.com": {
+    "name": "New York Post",
+    "useragent": null
+  },
+  "nzherald.co.nz": {
+    "name": "New Zealand Herald",
+    "useragent": null
+  },
+  "newsday.com": {
+    "name": "Newsday",
+    "useragent": null
+  },
+  "newslaundry.com": {
+    "name": "Newslaundry",
+    "useragent": null
+  },
+  "newsweek.com": {
+    "name": "Newsweek",
+    "useragent": null
+  },
+  "asia.nikkei.com": {
+    "name": "Nikkei Asian Review",
+    "useragent": null
+  },
+  "nwzonline.de": {
+    "name": "Nordwest Zeitung",
+    "useragent": null
+  },
+  "nrc.nl": {
+    "name": "NRC Handelsblad",
+    "useragent": null
+  },
+  "nsctotal.com.br": {
+    "name": "NSC Total",
+    "useragent": null
+  },
+  "nyteknik.se": {
+    "name": "NyTeknik",
+    "useragent": "googlebot"
+  },
+  "estadao.com.br": {
+    "name": "O Estado de S. Paulo",
+    "useragent": null
+  },
+  "globo.com": {
+    "name": "O Globo",
+    "useragent": null
+  },
+  "observador.pt": {
+    "name": "Observador.pt",
+    "useragent": null
+  },
+  "on3.com": {
+    "name": "ON3",
+    "useragent": null
+  },
+  "ouest-france.fr": {
+    "name": "Ouest-France.fr",
+    "useragent": null
+  },
+  "outdoorlife.com": {
+    "name": "Outdoor Life",
+    "useragent": null
+  },
+  "outlookbusiness.com": {
+    "name": "Outlook Business",
+    "useragent": null
+  },
+  "outlookindia.com": {
+    "name": "Outlook India",
+    "useragent": null
+  },
+  "paloaltoonline.com": {
+    "name": "Palo Alto Online",
+    "useragent": null
+  },
+  "parismatch.com": {
+    "name": "Paris Match",
+    "useragent": null
+  },
+  "pnp.de": {
+    "name": "Passauer Neue Presse",
+    "useragent": null
+  },
+  "pastemagazine.com": {
+    "name": "Paste Magazine",
+    "useragent": null
+  },
+  "philomag.com": {
+    "name": "PhiloMag.com",
+    "useragent": null
+  },
+  "philomag.de": {
+    "name": "PhiloMag.de",
+    "useragent": null
+  },
+  "philonomist.com": {
+    "name": "Philonomist",
+    "useragent": null
+  },
+  "philosophynow.org": {
+    "name": "Philosophy Now",
+    "useragent": null
+  },
+  "piratewires.com": {
+    "name": "Pirate Wires",
+    "useragent": null
+  },
+  "post-gazette.com": {
+    "name": "Pittsburgh Post Gazette",
+    "useragent": null
+  },
+  "politicaexterior.com": {
+    "name": "Política Exterior",
+    "useragent": null
+  },
+  "politico.com": {
+    "name": "Politico",
+    "useragent": null
+  },
+  "politis.fr": {
+    "name": "Politis.fr",
+    "useragent": null
+  },
+  "polityka.pl": {
+    "name": "Polityka.pl",
+    "useragent": "googlebot"
+  },
+  "popsci.com": {
+    "name": "Popular Science",
+    "useragent": null
+  },
+  "pourleco.com": {
+    "name": "Pour l'Éco",
+    "useragent": null
+  },
+  "pourlascience.fr": {
+    "name": "Pour la Science.fr",
+    "useragent": null
+  },
+  "profil.at": {
+    "name": "Profil.at",
+    "useragent": null
+  },
+  "project-syndicate.org": {
+    "name": "Project Syndicate",
+    "useragent": null
+  },
+  "prospectmagazine.co.uk": {
+    "name": "Prospect Magazine",
+    "useragent": null
+  },
+  "public.fr": {
+    "name": "Public.fr",
+    "useragent": null
+  },
+  "publico.es": {
+    "name": "Público.es",
+    "useragent": null
+  },
+  "puck.news": {
+    "name": "Puck.news",
+    "useragent": null
+  },
+  "pb.pl": {
+    "name": "Puls Biznesu",
+    "useragent": null
+  },
+  "qz.com": {
+    "name": "Quartz",
+    "useragent": null
+  },
+  "quora.com": {
+    "name": "Quora",
+    "useragent": null
+  },
+  "reforme.net": {
+    "name": "Réforme.net",
+    "useragent": null
+  },
+  "reuters.com": {
+    "name": "Reuters",
+    "useragent": null
+  },
+  "revistaoeste.com": {
+    "name": "Revista Oeste",
+    "useragent": null
+  },
+  "revueconflits.com": {
+    "name": "Revue Conflits",
+    "useragent": null
+  },
+  "revue21.fr": {
+    "name": "Revue21.fr",
+    "useragent": null
+  },
+  "rugbypass.com": {
+    "name": "RugbyPass",
+    "useragent": null
+  },
+  "spglobal.com": {
+    "name": "S&P Global",
+    "useragent": null
+  },
+  "sabado.pt": {
+    "name": "Sábado",
+    "useragent": null
+  },
+  "scholastic.com": {
+    "name": "Scholastic",
+    "useragent": null
+  },
+  "schweizermonat.ch": {
+    "name": "Schweizer Monat",
+    "useragent": null
+  },
+  "science.org": {
+    "name": "Science",
+    "useragent": null
+  },
+  "science-et-vie.com": {
+    "name": "Science & Vie",
+    "useragent": null
+  },
+  "sciencenews.org": {
+    "name": "ScienceNews.org",
+    "useragent": null
+  },
+  "sciencesetavenir.fr": {
+    "name": "Sciences et Avenir",
+    "useragent": null
+  },
+  "scientificamerican.com": {
+    "name": "Scientific American",
+    "useragent": null
+  },
+  "semana.com": {
+    "name": "Semana",
+    "useragent": null
+  },
+  "sky.it": {
+    "name": "Sky.it",
+    "useragent": null
+  },
+  "slate.com": {
+    "name": "Slate",
+    "useragent": null
+  },
+  "slideshare.net": {
+    "name": "SlideShare",
+    "useragent": null
+  },
+  "sofrep.com": {
+    "name": "SOFREP",
+    "useragent": null
+  },
+  "scmp.com": {
+    "name": "South China Morning Post",
+    "useragent": null
+  },
+  "infzm.com": {
+    "name": "Southern Weekly",
+    "useragent": null
+  },
+  "spacenews.com": {
+    "name": "Spacenews",
+    "useragent": null
+  },
+  "spektrum.de": {
+    "name": "Spektrum.de",
+    "useragent": null
+  },
+  "si.com": {
+    "name": "Sports Illustrated",
+    "useragent": null
+  },
+  "springermedizin.de": {
+    "name": "Springer Medizin",
+    "useragent": null
+  },
+  "standardmedia.co.ke": {
+    "name": "Standardmedia.co.ke",
+    "useragent": null
+  },
+  "startribune.com": {
+    "name": "Star Tribune",
+    "useragent": null
+  },
+  "statnews.com": {
+    "name": "StatNews",
+    "useragent": null
+  },
+  "stereogum.com": {
+    "name": "Stereogum",
+    "useragent": null
+  },
+  "stern.de": {
+    "name": "Stern.de",
+    "useragent": null
+  },
+  "stocknews.com": {
+    "name": "Stock News",
+    "useragent": null
+  },
+  "stratfor.com": {
+    "name": "Stratfor",
+    "useragent": "googlebot"
+  },
+  "study.com": {
+    "name": "Study.com",
+    "useragent": null
+  },
+  "stylist.co.uk": {
+    "name": "Stylist.co.uk",
+    "useragent": null
+  },
+  "suomensotilas.fi": {
+    "name": "Suomen Sotilas",
+    "useragent": null
+  },
+  "sueddeutsche.de": {
+    "name": "Süddeutsche Zeitung",
+    "useragent": null
+  },
+  "suedkurier.de": {
+    "name": "Südkurier",
+    "useragent": null
+  },
+  "swarajyamag.com": {
+    "name": "Swarajyamag",
+    "useragent": null
+  },
+  "t3n.de": {
+    "name": "T3n.de",
+    "useragent": null
+  },
+  "tampabay.com": {
+    "name": "Tampa Bay Times",
+    "useragent": null
+  },
+  "techinasia.com": {
+    "name": "Tech in Asia",
+    "useragent": null
+  },
+  "telegraaf.nl": {
+    "name": "Telegraaf",
+    "useragent": null
+  },
+  "telerama.fr": {
+    "name": "Télérama.fr",
+    "useragent": null
+  },
+  "tes.com": {
+    "name": "Tes Magazine",
+    "useragent": null
+  },
+  "texasmonthly.com": {
+    "name": "Texas Monthly",
+    "useragent": null
+  },
+  "theamericanconservative.com": {
+    "name": "The American Conservative",
+    "useragent": null
+  },
+  "the-american-interest.com": {
+    "name": "The American Interest",
+    "useragent": null
+  },
+  "theamericanscholar.org": {
+    "name": "The American Scholar",
+    "useragent": null
+  },
+  "theartnewspaper.com": {
+    "name": "The Art Newspaper",
+    "useragent": null
+  },
+  "ajc.com": {
+    "name": "The Atlanta Journal-Constitution",
+    "useragent": "googlebot"
+  },
+  "theatlantic.com": {
+    "name": "The Atlantic",
+    "useragent": null
+  },
+  "thebaffler.com": {
+    "name": "The Baffler",
+    "useragent": null
+  },
+  "thebanner.com": {
+    "name": "The Baltimore Banner",
+    "useragent": null
+  },
+  "bostonglobe.com": {
+    "name": "The Boston Globe",
+    "useragent": null
+  },
+  "bizjournals.com": {
+    "name": "The Business Journals",
+    "useragent": null
+  },
+  "businessoffashion.com": {
+    "name": "The Business of Fashion",
+    "useragent": null
+  },
+  "csmonitor.com": {
+    "name": "The Christian Science Monitor",
+    "useragent": null
+  },
+  "columbian.com": {
+    "name": "The Columbian",
+    "useragent": null
+  },
+  "thecritic.co.uk": {
+    "name": "The Critic",
+    "useragent": null
+  },
+  "thedailybeast.com": {
+    "name": "The Daily Beast",
+    "useragent": null
+  },
+  "dailywire.com": {
+    "name": "The Daily Wire",
+    "useragent": null
+  },
+  "dallasnews.com": {
+    "name": "The Dallas Morning News",
+    "useragent": "googlebot"
+  },
+  "thediplomat.com": {
+    "name": "The Diplomat",
+    "useragent": "facebookbot"
+  },
+  "thedispatch.com": {
+    "name": "The Dispatch",
+    "useragent": null
+  },
+  "economist.com": {
+    "name": "The Economist",
+    "useragent": null
+  },
+  "financialexpress.com": {
+    "name": "The Financial Express",
+    "useragent": null
+  },
+  "theglobeandmail.com": {
+    "name": "The Globe and Mail",
+    "useragent": null
+  },
+  "thehill.com": {
+    "name": "The Hill",
+    "useragent": null
+  },
+  "hilltimes.com": {
+    "name": "The Hill Times",
+    "useragent": "googlebot"
+  },
+  "thehindu.com": {
+    "name": "The Hindu",
+    "useragent": null
+  },
+  "thehindubusinessline.com": {
+    "name": "The Hindu BusinessLine",
+    "useragent": null
+  },
+  "indianexpress.com": {
+    "name": "The Indian Express",
+    "useragent": null
+  },
+  "theinformation.com": {
+    "name": "The Information",
+    "useragent": null
+  },
+  "theintercept.com": {
+    "name": "The Intercept",
+    "useragent": null
+  },
+  "irishexaminer.com": {
+    "name": "The Irish Examiner",
+    "useragent": null
+  },
+  "irishnews.com": {
+    "name": "The Irish News",
+    "useragent": null
+  },
+  "irishtimes.com": {
+    "name": "The Irish Times",
+    "useragent": null
+  },
+  "japantimes.co.jp": {
+    "name": "Piano.io",
+    "useragent": null
+  },
+  "jpost.com": {
+    "name": "The Jerusalem Post",
+    "useragent": null
+  },
+  "thelampmagazine.com": {
+    "name": "The Lamp Magazine",
+    "useragent": null
+  },
+  "thelawyer.com": {
+    "name": "The Lawyer",
+    "useragent": null
+  },
+  "theleaflet.in": {
+    "name": "The Leaflet.in",
+    "useragent": null
+  },
+  "thelogic.co": {
+    "name": "The Logic.co",
+    "useragent": null
+  },
+  "themarket.ch": {
+    "name": "The Market.ch",
+    "useragent": null
+  },
+  "thenation.com": {
+    "name": "The Nation",
+    "useragent": null
+  },
+  "thenewatlantis.com": {
+    "name": "The New Atlantis",
+    "useragent": null
+  },
+  "newcriterion.com": {
+    "name": "The New Criterion",
+    "useragent": null
+  },
+  "newrepublic.com": {
+    "name": "The New Republic",
+    "useragent": null
+  },
+  "newstatesman.com": {
+    "name": "The New Statesman",
+    "useragent": null
+  },
+  "thenewworld.co.uk": {
+    "name": "The New World",
+    "useragent": null
+  },
+  "nybooks.com": {
+    "name": "The New York Review of Books",
+    "useragent": null
+  },
+  "nysun.com": {
+    "name": "The New York Sun",
+    "useragent": null
+  },
+  "nytimes.com": {
+    "name": "The New York Times",
+    "useragent": null
+  },
+  "thenewslens.com": {
+    "name": "The News Lens",
+    "useragent": null
+  },
+  "thenewsminute.com": {
+    "name": "The News Minute",
+    "useragent": null
+  },
+  "observer.co.uk": {
+    "name": "The Observer UK",
+    "useragent": null
+  },
+  "the-past.com": {
+    "name": "The Past",
+    "useragent": null
+  },
+  "inquirer.com": {
+    "name": "The Philadelphia Inquirer",
+    "useragent": null
+  },
+  "thepointmag.com": {
+    "name": "The Point Magazine",
+    "useragent": null
+  },
+  "thequint.com": {
+    "name": "The Quint",
+    "useragent": null
+  },
+  "sltrib.com": {
+    "name": "The Salt Lake Tribune",
+    "useragent": null
+  },
+  "sfstandard.com": {
+    "name": "The San Francisco Standard",
+    "useragent": null
+  },
+  "thesaturdaypaper.com.au": {
+    "name": "The Saturday Paper",
+    "useragent": null
+  },
+  "the-scientist.com": {
+    "name": "The Scientist",
+    "useragent": null
+  },
+  "seattletimes.com": {
+    "name": "The Seattle Times",
+    "useragent": null
+  },
+  "spokesman.com": {
+    "name": "The Spokesman-Review",
+    "useragent": null
+  },
+  "telegraph.co.uk": {
+    "name": "The Telegraph",
+    "useragent": null
+  },
+  "thetimes.com": {
+    "name": "The Times UK",
+    "useragent": null
+  },
+  "the-tls.com": {
+    "name": "The Times Literary Supplement",
+    "useragent": null
+  },
+  "wsj.com": {
+    "name": "Cxense",
+    "useragent": null
+  },
+  "washingtonpost.com": {
+    "name": "The Washington Post",
+    "useragent": "googlebot"
+  },
+  "theweek.com": {
+    "name": "The Week",
+    "useragent": null
+  },
+  "thewest.com.au": {
+    "name": "The West Australian",
+    "useragent": null
+  },
+  "thewrap.com": {
+    "name": "The Wrap",
+    "useragent": null
+  },
+  "timeshighereducation.com": {
+    "name": "Times Higher Education",
+    "useragent": null
+  },
+  "tuttosport.com": {
+    "name": "Tuttosport",
+    "useragent": null
+  },
+  "tvn24.pl": {
+    "name": "TVN24.pl",
+    "useragent": "googlebot"
+  },
+  "unherd.com": {
+    "name": "UnHerd",
+    "useragent": null
+  },
+  "uol.com.br": {
+    "name": "UOL.com.br",
+    "useragent": "googlebot"
+  },
+  "usatoday.com": {
+    "name": "USA Today",
+    "useragent": "googlebot"
+  },
+  "valeursactuelles.com": {
+    "name": "Valeurs Actuelles",
+    "useragent": null
+  },
+  "vice.com": {
+    "name": "Vice",
+    "useragent": null
+  },
+  "vikatan.com": {
+    "name": "Vikatan",
+    "useragent": null
+  },
+  "voguebusiness.com": {
+    "name": "Vogue Business",
+    "useragent": null
+  },
+  "vn.at": {
+    "name": "Vorarlberg Nachrichten",
+    "useragent": null
+  },
+  "vol.at": {
+    "name": "Vorarlberg Online",
+    "useragent": null
+  },
+  "vn.nl": {
+    "name": "Vrij Nederland",
+    "useragent": null
+  },
+  "warontherocks.com": {
+    "name": "War on the Rocks",
+    "useragent": null
+  },
+  "washingtonexaminer.com": {
+    "name": "Washington Examiner",
+    "useragent": null
+  },
+  "weltkunst.de": {
+    "name": "Weltkunst",
+    "useragent": "googlebot"
+  },
+  "weser-kurier.de": {
+    "name": "Weser-Kurier",
+    "useragent": null
+  },
+  "winnipegfreepress.com": {
+    "name": "Winnipeg Free Press",
+    "useragent": null
+  },
+  "wiwo.de": {
+    "name": "WirtschaftsWoche",
+    "useragent": null
+  },
+  "wonderzine.com": {
+    "name": "Wonderzine",
+    "useragent": "facebookbot"
+  },
+  "worldeconomics.com": {
+    "name": "World Economics",
+    "useragent": null
+  },
+  "ynet.co.il": {
+    "name": "Ynet",
+    "useragent": null
+  },
+  "cdn.ampproject.org": {
+    "name": "Amp-access",
+    "useragent": null
+  },
+  "cambridge.org": {
+    "name": "Amp-access",
+    "useragent": null
+  },
+  "cmjornal.pt": {
+    "name": "Amp-access",
+    "useragent": null
+  },
+  "amplitude.com": {
+    "name": "Amplitude",
+    "useragent": null
+  },
+  "blueconic.net": {
+    "name": "BlueConic",
+    "useragent": null
+  },
+  "cxense.com": {
+    "name": "Cxense",
+    "useragent": null
+  },
+  "journaldemontreal.com": {
+    "name": "Cxense",
+    "useragent": null
+  },
+  "journaldequebec.com": {
+    "name": "Cxense",
+    "useragent": null
+  },
+  "ensighten.com": {
+    "name": "Ensighten",
+    "useragent": null
+  },
+  "evolok.net": {
+    "name": "Evolok",
+    "useragent": null
+  },
+  "fewcents.co": {
+    "name": "FewCents",
+    "useragent": null
+  },
+  "matheranalytics.com": {
+    "name": "MatherAnalytics",
+    "useragent": null
+  },
+  "newsmemory.com": {
+    "name": "NewsMemory",
+    "useragent": null
+  },
+  "memberstack.com": {
+    "name": "Memberstack",
+    "useragent": null
+  },
+  "omeda.com": {
+    "name": "Omeda Olytics",
+    "useragent": null
+  },
+  "onecount.net": {
+    "name": "OneCount",
+    "useragent": null
+  },
+  "pelcro.com": {
+    "name": "Pelcro",
+    "useragent": null
+  },
+  "piano.io": {
+    "name": "Piano.io",
+    "useragent": null
+  },
+  "nacion.com": {
+    "name": "Piano.io",
+    "useragent": null
+  },
+  "pico.tools": {
+    "name": "Pico.tools",
+    "useragent": null
+  },
+  "poool.fr": {
+    "name": "Poool.fr",
+    "useragent": null
+  },
+  "qiota.com": {
+    "name": "Qiota",
+    "useragent": null
+  },
+  "sophi.io": {
+    "name": "Sophi.io",
+    "useragent": null
+  },
+  "steadyhq.com": {
+    "name": "Steady",
+    "useragent": null
+  },
+  "zephr.com": {
+    "name": "Zephr",
+    "useragent": null
+  }
+}
