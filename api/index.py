@@ -66,15 +66,25 @@ UA_PROFILES = {
 }
 
 # ── Load BPC site rules ─────────────────────────────────────────────────────
-# For Vercel, check multiple possible paths
-_rules_path = os.path.join(_script_dir, '..', 'rules', 'bpc_sites.json')
-if not os.path.exists(_rules_path):
-    _rules_path = os.path.join(_script_dir, 'rules', 'bpc_sites.json')
-
 BPC_SITES = {}
-if os.path.exists(_rules_path):
-    with open(_rules_path, 'r') as f:
-        BPC_SITES = json.load(f)
+def load_sites():
+    global BPC_SITES
+    # Try multiple common relative paths in Vercel/Local
+    paths = [
+        os.path.join(_script_dir, '..', 'rules', 'bpc_sites.json'),
+        os.path.join(_script_dir, 'rules', 'bpc_sites.json'),
+        os.path.join(os.getcwd(), 'rules', 'bpc_sites.json')
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            try:
+                with open(p, 'r', encoding='utf-8') as f:
+                    BPC_SITES = json.load(f)
+                    return True
+            except: pass
+    return False
+
+load_sites()
 
 # ua_type → profile key
 UA_MAP = {
@@ -501,23 +511,22 @@ class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     daemon_threads = True
 
 
-class BPCHandler(http.server.SimpleHTTPRequestHandler):
+class handler(http.server.BaseHTTPRequestHandler):
 
     def log_message(self, format, *args):
-        path = str(args[0]) if args else ''
-        if '/proxy' in path or path.endswith('/ HTTP/1.1'):
-            super().log_message(format, *args)
+        pass
 
     def do_GET(self):
+        if not BPC_SITES: load_sites()
         parsed = urllib.parse.urlparse(self.path)
         if parsed.path == '/proxy':
             self.handle_proxy(parsed)
         elif parsed.path == '/api/sites':
             self.serve_json(BPC_SITES)
         elif parsed.path == '/api/status':
-            self.serve_json({'status': 'ok', 'sites': len(BPC_SITES), 'version': '3.0'})
+            self.serve_json({'status': 'ok', 'sites': len(BPC_SITES), 'version': '3.1v'})
         else:
-            super().do_GET()
+            self.send_error(404)
 
     def serve_json(self, data):
         out = json.dumps(data).encode('utf-8')
